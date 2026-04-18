@@ -10,8 +10,8 @@ export default function BlogNotFound() {
         Bài viết không tồn tại
       </h1>
       <p className="mb-8 text-slate-600 dark:text-slate-300">
-        Có vẻ như đường dẫn này không trỏ đến bài viết nào. Hãy quay lại danh
-        sách để chọn một bài khác nhé.
+        Bài viết bạn tìm kiếm không tồn tại hoặc đã bị xóa. Hãy quay lại danh sách
+        để chọn bài khác nhé.
       </p>
       <Link
         href="/blog"

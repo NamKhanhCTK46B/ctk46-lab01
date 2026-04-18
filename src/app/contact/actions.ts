@@ -1,0 +1,49 @@
+"use server";
+
+import { z } from "zod";
+
+const contactSchema = z.object({
+  name: z
+    .string()
+    .min(2, "Họ tên phải có ít nhất 2 ký tự")
+    .max(100, "Họ tên không được quá 100 ký tự"),
+  email: z.string().email("Email không hợp lệ"),
+  subject: z
+    .string()
+    .min(5, "Tiêu đề phải có ít nhất 5 ký tự")
+    .max(200, "Tiêu đề không được quá 200 ký tự"),
+  message: z
+    .string()
+    .min(10, "Nội dung phải có ít nhất 10 ký tự")
+    .max(2000, "Nội dung không được quá 2000 ký tự"),
+});
+
+export interface ContactFormState {
+  success: boolean;
+  errors?: {
+    name?: string[];
+    email?: string[];
+    subject?: string[];
+    message?: string[];
+  };
+}
+
+export async function sendContactMessage(
+  _prevState: ContactFormState,
+  formData: FormData,
+): Promise<ContactFormState> {
+  const rawData = {
+    name: (formData.get("name") as string | null)?.trim() ?? "",
+    email: (formData.get("email") as string | null)?.trim() ?? "",
+    subject: (formData.get("subject") as string | null)?.trim() ?? "",
+    message: (formData.get("message") as string | null)?.trim() ?? "",
+  };
+
+  const result = contactSchema.safeParse(rawData);
+  if (!result.success) {
+    return { success: false, errors: result.error.flatten().fieldErrors };
+  }
+
+  console.log("Tin nhắn liên hệ mới:", result.data);
+  return { success: true };
+}

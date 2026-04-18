@@ -10,6 +10,8 @@ const navLinks = [
   { href: "/projects", label: "Dự án" },
   { href: "/skills", label: "Kỹ năng" },
   { href: "/blog", label: "Blog" },
+  { href: "/books", label: "Sách" },
+  { href: "/guestbook", label: "Lưu bút" },
   { href: "/contact", label: "Liên hệ" },
 ];
 
