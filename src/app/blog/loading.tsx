@@ -1,18 +1,24 @@
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
+
 export default function Loading() {
   return (
     <section className="mx-auto max-w-4xl px-4 py-12 sm:px-6">
-      <div className="mb-2 h-8 w-32 animate-pulse rounded bg-slate-200 dark:bg-slate-800" />
-      <div className="mb-8 h-4 w-2/3 animate-pulse rounded bg-slate-200 dark:bg-slate-800" />
-      <ul className="space-y-4">
-        {[0, 1, 2].map((i) => (
-          <li
-            key={i}
-            className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900"
-          >
-            <div className="mb-2 h-6 w-3/4 animate-pulse rounded bg-slate-200 dark:bg-slate-800" />
-            <div className="mb-3 h-3 w-40 animate-pulse rounded bg-slate-200 dark:bg-slate-800" />
-            <div className="mb-1 h-3 w-full animate-pulse rounded bg-slate-200 dark:bg-slate-800" />
-            <div className="h-3 w-5/6 animate-pulse rounded bg-slate-200 dark:bg-slate-800" />
+      <Skeleton className="mb-2 h-8 w-32" />
+      <Skeleton className="mb-8 h-4 w-2/3" />
+      <ul className="grid gap-4 sm:grid-cols-2">
+        {[0, 1, 2, 3].map((i) => (
+          <li key={i}>
+            <Card>
+              <CardHeader>
+                <Skeleton className="h-5 w-20" />
+                <Skeleton className="h-6 w-3/4" />
+              </CardHeader>
+              <CardContent>
+                <Skeleton className="mb-2 h-3 w-full" />
+                <Skeleton className="h-3 w-5/6" />
+              </CardContent>
+            </Card>
           </li>
         ))}
       </ul>

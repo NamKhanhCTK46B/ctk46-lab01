@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { projects } from "@/data/projects";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 export const metadata: Metadata = {
   title: "Dự án | Nguyễn Hoàng Nam Khánh",
@@ -19,27 +27,32 @@ export default function ProjectsPage() {
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {projects.map((project) => (
-          <article
-            key={project.id}
-            className="flex flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
-          >
-            <h2 className="mb-2 text-xl font-semibold text-slate-900 dark:text-white">
-              {project.title}
-            </h2>
-            <p className="mb-4 flex-1 text-sm text-slate-600 dark:text-slate-300">
-              {project.description}
-            </p>
-            <ul className="mb-4 flex flex-wrap gap-2">
-              {project.tech.map((t) => (
-                <li
-                  key={t}
-                  className="rounded-full bg-indigo-50 px-2.5 py-0.5 text-xs font-medium text-indigo-700 dark:bg-slate-800 dark:text-indigo-300"
+          <Card key={project.id} className="flex h-full flex-col">
+            <CardHeader>
+              <CardTitle className="text-lg">{project.title}</CardTitle>
+              <div className="mt-1 flex flex-wrap items-center gap-2">
+                <Badge
+                  variant={
+                    project.status === "Hoàn thành" ? "default" : "secondary"
+                  }
                 >
-                  {t}
-                </li>
-              ))}
-            </ul>
-            <div className="flex items-center justify-between">
+                  {project.status}
+                </Badge>
+              </div>
+            </CardHeader>
+            <CardContent className="flex-1">
+              <p className="mb-3 text-sm text-slate-600 dark:text-slate-300">
+                {project.description}
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {project.tech.map((t) => (
+                  <Badge key={t} variant="outline">
+                    {t}
+                  </Badge>
+                ))}
+              </div>
+            </CardContent>
+            <CardFooter className="flex items-center justify-between">
               <Link
                 href={`/projects/${project.id}`}
                 className="text-sm font-semibold text-indigo-700 hover:underline dark:text-indigo-300"
@@ -66,8 +79,8 @@ export default function ProjectsPage() {
                   Mã nguồn
                 </Link>
               </div>
-            </div>
-          </article>
+            </CardFooter>
+          </Card>
         ))}
       </div>
     </section>

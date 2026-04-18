@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 export const metadata: Metadata = {
   title: "Giới thiệu | Nguyễn Hoàng Nam Khánh",
@@ -9,12 +10,19 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <section className="mx-auto max-w-4xl px-4 py-12 sm:px-6">
-      <h1 className="mb-2 text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-        Giới thiệu
-      </h1>
-      <p className="mb-8 text-slate-600 dark:text-slate-300">
-        Một vài thông tin về bản thân, sở thích và mục tiêu học tập.
-      </p>
+      <div className="mb-6 flex items-center gap-4">
+        <Avatar size="lg" className="size-16">
+          <AvatarFallback className="text-lg font-semibold">NK</AvatarFallback>
+        </Avatar>
+        <div>
+          <h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+            Giới thiệu
+          </h1>
+          <p className="text-slate-600 dark:text-slate-300">
+            Một vài thông tin về bản thân, sở thích và mục tiêu học tập.
+          </p>
+        </div>
+      </div>
 
       <div className="mb-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
         <dl className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -49,7 +57,7 @@ export default function AboutPage() {
         </dl>
       </div>
 
-      <p className="mb-8 rounded-xl border-l-4 border-indigo-500 bg-indigo-50 p-4 italic text-indigo-900 dark:border-indigo-400 dark:bg-slate-900 dark:text-indigo-200">
+      <p className="mt-8 mb-8 rounded-xl border-l-4 border-indigo-500 bg-indigo-50 p-4 italic text-indigo-900 dark:border-indigo-400 dark:bg-slate-900 dark:text-indigo-200">
         Là sinh viên CNTT đam mê học hỏi công nghệ web hiện đại, tôi mong muốn
         xây dựng được những ứng dụng hữu ích cho cộng đồng.
       </p>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import CopyButton from "@/components/copy-button";
+import ContactForm from "@/components/contact-form";
 
 export const metadata: Metadata = {
   title: "Liên hệ | Nguyễn Hoàng Nam Khánh",
@@ -53,6 +54,8 @@ export default function ContactPage() {
           </p>
         </div>
       </div>
+
+      <ContactForm />
     </section>
   );
 }

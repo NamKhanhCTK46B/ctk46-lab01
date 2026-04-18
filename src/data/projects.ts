@@ -1,3 +1,5 @@
+export type ProjectStatus = "Hoàn thành" | "Đang phát triển";
+
 export interface Project {
   id: string;
   title: string;
@@ -6,6 +8,7 @@ export interface Project {
   repo: string;
   tech: string[];
   demo?: string;
+  status: ProjectStatus;
 }
 
 export const projects: Project[] = [
@@ -19,6 +22,7 @@ export const projects: Project[] = [
     repo: "https://github.com/NamKhanhCTK46B/NifiCafe",
     tech: ["WordPress", "PHP", "MySQL", "jQuery", "Astra Child Theme"],
     demo: "https://nificafe.rf.gd",
+    status: "Hoàn thành",
   },
   {
     id: "caro-game",
@@ -34,6 +38,7 @@ export const projects: Project[] = [
       "Minimax + Alpha-Beta",
       "Mẫu thiết kế (MVC)",
     ],
+    status: "Hoàn thành",
   },
   {
     id: "ebook-to-latex",
@@ -51,6 +56,7 @@ export const projects: Project[] = [
       "React",
       "Docker Compose",
     ],
+    status: "Đang phát triển",
   },
   {
     id: "group-assignment-nhom-4",
@@ -61,5 +67,6 @@ export const projects: Project[] = [
       "Đây là bài tập lớn được thực hiện cùng các bạn trong Nhóm 4 của lớp. Vai trò chính của dự án không chỉ là hoàn thành các yêu cầu kỹ thuật mà còn là dịp để cả nhóm rèn luyện quy trình làm việc cộng tác trên Git: chia nhánh tính năng, mở pull request, review chéo và giải quyết xung đột mã nguồn. Vai trò của mình trong nhóm bao gồm thiết kế cấu trúc dự án, viết tài liệu hướng dẫn và đảm bảo các nhánh được hợp nhất sạch sẽ vào nhánh chính.",
     repo: "https://github.com/lqtdlu/group-assignment-nhom-4",
     tech: ["Git", "GitHub Flow", "Làm việc nhóm"],
+    status: "Hoàn thành",
   },
 ];
